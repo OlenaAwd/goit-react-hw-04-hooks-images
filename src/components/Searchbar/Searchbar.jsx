@@ -4,15 +4,15 @@ import css from "./Searchbar.module.css";
 import toast, { Toaster } from "react-hot-toast";
 
 export function Searchbar({ onHandleSubmit }) {
-  const [query, setQuery] = useState("");
+  const [input, setInput] = useState("");
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (query.trim() === "") {
-      return toast.error(`Please enter a value for search images!`);
+    if (input.trim() === "") {
+      return toast.error(`Please, enter your request for search images!`);
     }
-    onHandleSubmit(query);
-    setQuery("");
+    onHandleSubmit(input);
+    setInput("");
   };
 
   return (
@@ -25,11 +25,11 @@ export function Searchbar({ onHandleSubmit }) {
         <input
           className={css.input}
           type="text"
-          value={query}
+          value={input}
           autoComplete="off"
           autoFocus
           placeholder="Search images and photos"
-          onChange={({ target }) => setQuery(target.value)}
+          onChange={({ target }) => setInput(target.value)}
         />
       </form>
       <Toaster />
